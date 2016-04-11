@@ -2,31 +2,31 @@
 
 $msg = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST["name"];
-    $pass = $_POST["pass"];
+	$name = $_POST["name"];
+	$pass = $_POST["pass"];
 	if ($name == '' or $pass == ''){
-        $msg = "You must fill all fields.";
-    }
-    else{
-        $sql = "SELECT * FROM coordinator WHERE username = '$name' AND passw = '$pass';";
-        $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-        $result = $db->query($sql);
+		$msg = "You must fill all fields.";
+	}
+	else{
+		$sql = "SELECT * FROM coordinator WHERE username = '$name' AND passw = '$pass';";
+		$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+		$result = $db->query($sql);
 
-        if ($result->num_rows > 0) {
-        	session_start();
-        	$row = $result->fetch_assoc();
-        	$_SESSION["id"] = $row["idCoordinator"];
-        	$_SESSION["fullname"] = $row["fullName"];
+		if ($result->num_rows > 0) {
+			session_start();
+			$row = $result->fetch_assoc();
+			$_SESSION["id"] = $row["idCoordinator"];
+			$_SESSION["fullname"] = $row["fullName"];
 
-        	$host  = $_SERVER['HTTP_HOST'];
-        	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-        	$extra = 'menu.php';
-        	header("Location: http://$host$uri/$extra");
-            exit;
-        }
+			$host  = $_SERVER['HTTP_HOST'];
+			$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+			$extra = 'menu.php';
+			header("Location: http://$host$uri/$extra");
+			exit;
+		}
 
-        $msg = "Username and password do not match.";
-    }
+		$msg = "Username and password do not match.";
+	}
 }
 ?>
 
