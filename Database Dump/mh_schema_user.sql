@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: localhost    Database: mh_schema
+-- Host: 127.0.0.1    Database: mh_schema
 -- ------------------------------------------------------
 -- Server version	5.7.11-log
 
@@ -28,6 +28,7 @@ CREATE TABLE `user` (
   `fullName` varchar(45) NOT NULL,
   `birthdate` date DEFAULT NULL,
   `mealsLeft` int(1) NOT NULL DEFAULT '7',
+  `password` varchar(45) DEFAULT '555',
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `idUser_UNIQUE` (`idUser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8;
@@ -39,7 +40,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (123,45461,'JohnSux','2005-12-12',7);
+INSERT INTO `user` VALUES (123,45461,'JohnSux','2005-12-12',7,'555');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-09 19:14:44
+-- Dump completed on 2016-04-11 14:49:27
